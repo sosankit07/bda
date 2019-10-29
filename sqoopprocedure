@@ -1,0 +1,8 @@
+jps
+mysql -u root -p
+**create db and tables**
+>mysql quit
+sqoop import --connect jdbc:mysql://127.0.0.1:3306/dbname --username root --password root --table table-name -m 1
+hadoop fs -ls dbname
+hadoop fs -cat dbname/part-m-00000
+

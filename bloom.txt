@@ -1,0 +1,28 @@
+a = [0,0,0,0,0,0,0,0,0,0]
+
+def hash(a):
+    h1=(6*a +1)%10
+    h2=(2*a +1)%10
+    return h1,h2
+
+def hashcalc(word):
+    print([word[i:i+1] for i in range(0, len(word))])
+    a=0
+    for i in range(len(word)):
+        a+= ord(word[i])
+    return a
+
+words=input()
+x=hashcalc(words)
+x1,x2 = hash(x)
+print(x1,x2)
+a[x1]=a[x2]=1
+print(a)
+ip=input()
+s=hashcalc(ip)
+s1,s2=hash(s)
+print(s1,s2)
+if(a[s1]==1 and a[s2] == 1):
+    print("It is a Spam")
+else:
+    print("Not a Spam")

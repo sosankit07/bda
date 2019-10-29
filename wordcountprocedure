@@ -1,0 +1,13 @@
+*Optional - export CLASSPATH=`hadoop classpath`:.:
+*Optional - echo $CLASSPATH
+*Optional - start-all.sh
+*Optional - jps
+hdfs dfs -mkdir /word
+hdfs dfs -ls /
+hdfs dfs -copyFromLocal /home/administrator/wordcount/input.txt /word
+hdfs dfs -ls /word
+javac -d /home/administrator/wordcount/class /home/administrator/wordcount/wordcount.java
+jar -cvf /home/administrator/wordcount/word.jar -C /home/administrator/wordcount/class/.
+hadoop jar /home/administrator/wordcount/word.jar wordcount /word/input.txt  /word/output
+hdfs dfs -ls /word/output
+hdfs dfs -cat /word/output/part-r-00000
